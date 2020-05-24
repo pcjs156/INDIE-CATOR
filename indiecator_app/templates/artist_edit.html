@@ -26,7 +26,7 @@
         </nav>
     </head>
     <article>
-        <form action="{% url 'update' artist.id %}" method="POST" enctype="multipart/form-data">
+        <form action="{% url 'artist_update' artist.id %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div>
             제목 : <input type="text" name="name" value="{{artist.name}}">
@@ -42,6 +42,16 @@
             상세 설명 : <br>
             <textarea name="description" cols="30" rows="10">{{artist.description}}</textarea>
         </div>
+
+        <label for="profile_image">
+            <img src="{{ artist.profile_image.url }}" style="width: 50px;" alt="">
+           
+        </label>
+        <div>
+            <input type="file" name="profile_image" id="profile_image">
+        </div>
+        
+        <button type="submit">수정 완료</button>
         </form>
     </article>
 

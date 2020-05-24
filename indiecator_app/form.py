@@ -5,3 +5,8 @@ class ArtistForm(forms.ModelForm):
     class Meta:
         model = Artist
         fields = ['name', 'debut_date', 'member', 'description', 'profile_image']
+
+class ArtistImageForm(forms.ModelForm):
+    class Meta:
+        model = Artist
+        fields = ['profile_image']
