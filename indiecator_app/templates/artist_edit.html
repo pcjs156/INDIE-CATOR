@@ -20,8 +20,30 @@
 </head>
 
 <body>
+    <head>
+        <nav>
 
-    <!-- CODE HERE! -->
+        </nav>
+    </head>
+    <article>
+        <form action="{% url 'update' artist.id %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            제목 : <input type="text" name="name" value="{{artist.name}}">
+        </div>
+        <div>
+            데뷔일 : <input type="text" name="debut_date" value="{{artist.debut_date}}">
+        </div>
+        <div>
+            멤버 소개 : <br>
+            <textarea name="member" cols="30" rows="10">{{artist.member}}</textarea>
+        </div>
+        <div>
+            상세 설명 : <br>
+            <textarea name="description" cols="30" rows="10">{{artist.description}}</textarea>
+        </div>
+        </form>
+    </article>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" crossorigin="anonymous"></script>

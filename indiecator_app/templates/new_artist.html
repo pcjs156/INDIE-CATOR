@@ -28,11 +28,13 @@
     <article>
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <div>{{form.name}}</div>
-            <div>{{form.debut_date}}</div>
-            <div>{{form.member}}</div>
-            <div>{{form.description}}</div>
-            <div></div>
+            <div>아티스트 이름 : {{form.name}}</div>
+            <div style="color: red;">아티스트 데뷔일 : {{form.debut_date}} <br>
+                문제가 있는데,, 2020-03-15 형식으로 안써주면 DB Create이 안됨<br>
+                나중에 수정해봄 ㅎㅎ,,</div>
+            <div>멤버 소개 : {{form.member}}</div>
+            <div>상세 설명 : {{form.description}}</div>
+            <div>프로필 이미지 : {{form.profile_image}}</div>
             <button type="submit">새 아티스트 등록</button>
             <button type="reset">정보 리셋</button>
         </form>
