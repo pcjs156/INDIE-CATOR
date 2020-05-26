@@ -44,11 +44,10 @@
         </div>
 
         <label for="profile_image">
-            <img src="{{ artist.profile_image.url }}" style="width: 50px;" alt="">
-           
+            <img src="{{ artist.profile_image.url }}" style="width: 70px;" alt="">
         </label>
         <div>
-            <input type="file" name="profile_image" id="profile_image">
+            {{form.profile_image}}
         </div>
         
         <button type="submit">수정 완료</button>
