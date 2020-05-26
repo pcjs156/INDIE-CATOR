@@ -16,8 +16,8 @@ class Artist(models.Model):
 # 유저가 CRUD 할 수 없고, admin 페이지를 통해 CRUD할 예정
 class Event(models.Model):
     name = models.CharField(max_length=100) # 콘서트 이름
-    start_date = models.DateTimeField() # 시작일
-    end_date = models.DateTimeField() # 종료일
+    start_date = models.DateField() # 시작일
+    end_date = models.DateField() # 종료일
     location = models.CharField(max_length=100) # 장소
     description = models.TextField() # 상세설명
     poster = models.ImageField(upload_to="indiecator/", blank=True, null=True) # 포스터
