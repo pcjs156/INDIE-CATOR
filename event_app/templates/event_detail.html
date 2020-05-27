@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{% static 'css/common.css' %}">
     <link rel="stylesheet" href="{% static 'css/artist_detail.css' %}">
 
-    <title>페이지 제목</title>
+    <title>세부 일정 : {{event.name}}</title>
 </head>
 
 <body>
@@ -35,6 +35,12 @@
         <!-- 이하 아티스트 목록 -->
         {% for artist in event.artist_list %}
         <div>{{artist.name}}</div>
+        {% endfor %}
+        <hr>
+        {% for comment in comments %}
+        <div>작성자 : {{comment.author}}</div> 
+        <div>작성일 : {{comment.commented_date}}</div>
+        <div><textarea name="" id="" cols="30" rows="10">{{comment.body}}</textarea></div>
         {% endfor %}
     </article>
 
