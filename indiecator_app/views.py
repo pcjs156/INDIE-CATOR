@@ -52,11 +52,13 @@ def artist_update(request, artist_id):
     # modified_artist.profile_image = request.POST['profile_image']
     modified_artist.profile_image = request.POST.get('profile_image', False)
 
-    modified_artist.save()
+    modified_artist.save() 
     
     return redirect('/artist/')
 
 
 # CRUD - Delete : 구현은 나중에
 def artist_delete(request, artist_id):
-    pass
+    target_artist = get_object_or_404(Artist, pk=artist_id)
+    target_artist.delete()
+    return redirect('artist_main')
