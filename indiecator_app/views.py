@@ -7,7 +7,7 @@ from .form import ArtistForm
 
 # 아티스트 메인 페이지 : /artist
 def artist_main(request):
-    artists = Artist.objects.all()
+    artists = Artist.objects.all().order_by('-interest')
     return render(request, 'artist_main.html', {'artists':artists})
 
 # 아티스트 추가 페이지 : /artist/new
@@ -65,4 +65,4 @@ def interest_up(request, artist_id):
     target_artist.interest += 1
     target_artist.save()
 
-    return redirect('artist_main')
+    return redirect('/artist' + '#' + str(artist_id))
