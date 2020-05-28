@@ -23,10 +23,6 @@ def new_artist(request):
         form = ArtistForm()
         return render(request, 'new_artist.html', {'form':form})
 
-# CRUD - Create : 구현은 나중에
-def artist_create(request):
-    pass
-
 # 아티스트 수정 페이지 : /artist/edit/(artist_id)
 def artist_edit(request, artist_id):
     artist = get_object_or_404(Artist, pk=artist_id)
@@ -42,9 +38,9 @@ def artist_edit(request, artist_id):
         return render(request, 'artist_edit.html', {'artist':artist, 'form':form})
 
 
-# CRUD - Update : 구현은 나중에
+# CRUD - Update
 def artist_update(request, artist_id):
-    modified_artist = get_object_or_404(Artist)
+    modified_artist = get_object_or_404(Artist, pk=artist_id)
     modified_artist.name = request.POST['name']
     modified_artist.debut_date = request.POST['debut_date']
     modified_artist.member = request.POST['member']
@@ -57,7 +53,7 @@ def artist_update(request, artist_id):
     return redirect('/artist/')
 
 
-# CRUD - Delete : 구현은 나중에
+# CRUD - Delete
 def artist_delete(request, artist_id):
     target_artist = get_object_or_404(Artist, pk=artist_id)
     target_artist.delete()
