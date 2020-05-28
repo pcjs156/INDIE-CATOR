@@ -32,12 +32,3 @@ def new_comment(request, event_id):
     new_comment.save()
 
     return redirect('/event/event_detail/' + str(event_id))
-
-# def create_comment(request):
-#     new_comment = BlogPost()
-#     new_comment.title = request.POST['title']
-#     new_comment.body = request.POST['body']
-#     new_comment.pub_date = timezone.datetime.now()
-#     new_comment.save()
-
-#     return render(request, 'event_detail.html', {'event':event, 'comments':comments, 'form':form})

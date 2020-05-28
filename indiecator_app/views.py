@@ -58,3 +58,11 @@ def artist_delete(request, artist_id):
     target_artist = get_object_or_404(Artist, pk=artist_id)
     target_artist.delete()
     return redirect('artist_main')
+
+def interest_up(request, artist_id):
+    target_artist = get_object_or_404(Artist, pk=artist_id)
+    print(target_artist.interest)
+    target_artist.interest += 1
+    target_artist.save()
+
+    return redirect('artist_main')
