@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
+from django.db.models import Max
 
 from .models import Artist
 from .form import ArtistForm
@@ -7,8 +8,15 @@ from .form import ArtistForm
 
 # 아티스트 메인 페이지 : /artist
 def artist_main(request):
-    artists = Artist.objects.all().order_by('-interest')
-    return render(request, 'artist_main.html', {'artists':artists})
+    artists = Artist.objects.all()
+
+    top_interest = artists.aggregate(Max('interest'))['interest__max']
+    
+    top_artists = artists.filter(interest=top_interest).order_by('name')
+    rest_artists = artists.exclude(interest=top_interest).order_by('-interest')
+    
+
+    return render(request, 'artist_main.html', {'top_artists':top_artists, 'rest_artists':rest_artists})
 
 # 아티스트 추가 페이지 : /artist/new
 def new_artist(request):
