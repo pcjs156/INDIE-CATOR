@@ -20,6 +20,7 @@
 </head>
 
 <body>
+
     <head>
         <nav>
 
@@ -27,30 +28,30 @@
     </head>
     <article>
         <form action="{% url 'artist_update' artist.id %}" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div>
-            제목 : <input type="text" name="name" value="{{artist.name}}">
-        </div>
-        <div>
-            데뷔일 : <input type="text" name="debut_date" value="{{artist.debut_date}}">
-        </div>
-        <div>
-            멤버 소개 : <br>
-            <textarea name="member" cols="30" rows="10">{{artist.member}}</textarea>
-        </div>
-        <div>
-            상세 설명 : <br>
-            <textarea name="description" cols="30" rows="10">{{artist.description}}</textarea>
-        </div>
+            {% csrf_token %}
+            <div>
+                제목 : <input type="text" name="name" value="{{artist.name}}">
+            </div>
+            <div>
+                데뷔일 : <input type="text" name="debut_date" value="{{artist.debut_date}}">
+            </div>
+            <div>
+                멤버 소개 : <br>
+                <textarea name="member" cols="30" rows="10">{{artist.member}}</textarea>
+            </div>
+            <div>
+                상세 설명 : <br>
+                <textarea name="description" cols="30" rows="10">{{artist.description}}</textarea>
+            </div>
 
-        <label for="profile_image">
-            <img src="{{ artist.profile_image.url }}" style="width: 70px;" alt="">
-        </label>
-        <div>
-            {{form.profile_image}}
-        </div>
-        
-        <button type="submit">수정 완료</button>
+            <label for="profile_image">
+                <img src="{{ artist.profile_image.url }}" style="width: 70px;" alt="">
+            </label>
+            <div>
+                {{form.profile_image}}
+            </div>
+
+            <button type="submit">수정 완료</button>
         </form>
     </article>
 

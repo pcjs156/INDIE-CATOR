@@ -3,53 +3,54 @@
 <!DOCTYPE html>
 <html lang="ko">
 <title>INDIE_CATOR</title>
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- 부트스트랩 CDN -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <!-- 부트스트랩 CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-<!-- static CSS -->
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <!-- static CSS -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
 </head>
 
 <body>
     <a href="{% url 'new_artist' %}"><button>아티스트 등록</button></a><br>
     <div>이하 이 달의 아티스트</div>
     {% for artist in top_artists %}
-        <span id="{{artist.id}}">
+    <span id="{{artist.id}}">
         <img src="{{ artist.profile_image.url }}" style="width: 100px;">
         <div>아티스트 이름 : {{artist.name}}</div>
         <div>데뷔일 : {{artist.debut_date}}</div>
         <div>멤버 소개 : {{artist.member}}</div>
         <div>상세 설명 : {{artist.description}}</div>
-        <div>관심도 : {{artist.interest}} | <a href="{% url 'interest_up' artist.id %}"><button>관심도 ++</button></a></div> 
+        <div>관심도 : {{artist.interest}} | <a href="{% url 'interest_up' artist.id %}"><button>관심도 ++</button></a></div>
         <div><a href="{% url 'artist_edit' artist.id%}"><button>아티스트 정보 수정</button></a></div>
         <div><a href="{% url 'artist_delete' artist.id%}"><button>아티스트 삭제</button></a></div>
-        </span>
-        <br>
+    </span>
+    <br>
     {% endfor %}
-    
+
     <br><br>
     <div>이하 이 달의 아티스트를 제외한 아티스트</div>
     {% for artist in rest_artists %}
-        <span id="{{artist.id}}">
+    <span id="{{artist.id}}">
         <img src="{{ artist.profile_image.url }}" style="width: 100px;">
         <div>아티스트 이름 : {{artist.name}}</div>
         <div>데뷔일 : {{artist.debut_date}}</div>
         <div>멤버 소개 : {{artist.member}}</div>
         <div>상세 설명 : {{artist.description}}</div>
-        <div>관심도 : {{artist.interest}} | <a href="{% url 'interest_up' artist.id %}"><button>관심도 ++</button></a></div> 
+        <div>관심도 : {{artist.interest}} | <a href="{% url 'interest_up' artist.id %}"><button>관심도 ++</button></a></div>
         <div><a href="{% url 'artist_edit' artist.id%}"><button>아티스트 정보 수정</button></a></div>
         <div><a href="{% url 'artist_delete' artist.id%}"><button>아티스트 삭제</button></a></div>
-        </span>
-        <br>
+    </span>
+    <br>
     {% endfor %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" crossorigin="anonymous"></script>

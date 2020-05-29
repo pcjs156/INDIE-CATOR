@@ -2,58 +2,50 @@
 
 <!DOCTYPE html>
 <html lang="ko">
-<title>INDIE_CATOR</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- 부트스트랩 CDN -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<head>
+  <title>INDIE_CATOR</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- static CSS -->
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="{% static 'css/home.css' %}">
+  <!-- 부트스트랩 CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-<style>
-  body {
-    font-family: "Lato", sans-serif
-  }
+  <!-- static CSS -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+  <link rel="stylesheet" href="{% static 'css/common.css' %}">
 
-  .mySlides {
-    display: none
-  }
-</style>
+</head>
 
 
 <body>
-
-  <head>
-    <nav>
-      <!-- Navbar -->
-      <div class="w3-top">
-        <div class="w3-bar w3-black w3-card">
-          <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right"
-            href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i
-              class="fa fa-bars"></i></a>
-              <a href="{% url 'main_home' %}" class="w3-bar-item w3-button w3-padding-large">HOME</a>
-              <a href="{% url 'artist_main' %}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">ARTIST</a>
-              <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small">EVENT</a>
-            <div style="text-align: right;">
-            {% if user.is_authenticated %}
-            {{user.username}}님 환영합니다. <br>
-            <a href="{% url 'signout' %}">로그아웃</a>
-            {%else%}
-            <a href="{% url 'signin' %}">로그인</a> <br>
-            <a href="{% url 'signup' %}">회원가입</a>
-            {% endif %}
-          </div>
+  <nav>
+    <!-- Navbar -->
+    <div class="w3-top">
+      <div class="w3-bar w3-black w3-card">
+        <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right"
+          href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i
+            class="fa fa-bars"></i></a>
+        <a href="{% url 'main_home' %}" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+        <a href="{% url 'artist_main' %}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">ARTIST</a>
+        <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small">EVENT</a>
+        <div style="text-align: right;">
+          {% if user.is_authenticated %}
+          {{user.username}}님 환영합니다. <br>
+          <a href="{% url 'signout' %}">로그아웃</a>
+          {%else%}
+          <a href="{% url 'signin' %}">로그인</a> <br>
+          <a href="{% url 'signup' %}">회원가입</a>
+          {% endif %}
         </div>
       </div>
-    </nav>
-  </head>
+    </div>
+  </nav>
   <!-- Page content -->
   <div class="w3-content" style="max-width:2000px;margin-top:46px">
 
