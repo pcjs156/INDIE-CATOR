@@ -28,24 +28,22 @@
     <!-- Navbar -->
     <div class="w3-top">
       <div class="w3-bar w3-black w3-card">
-        <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right"
-          href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i
-            class="fa fa-bars"></i></a>
-        <a href="{% url 'main_home' %}" class="w3-bar-item w3-button w3-padding-large">HOME</a>
-        <a href="{% url 'artist_main' %}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">ARTIST</a>
-        <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small">EVENT</a>
-        <div style="text-align: right;">
-          {% if user.is_authenticated %}
-          {{user.username}}님 환영합니다. <br>
-          <a href="{% url 'signout' %}">로그아웃</a>
+          <a href="{% url 'main_home' %}" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+          <a href="{% url 'artist_main' %}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">ARTIST</a>
+          <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small">EVENT</a>
+
+          <type class="w3-padding-large w3-hide-small w3-right">
+          {% if user.is_authenticated %} WELCOME, {{user.username}}!</type>
+          <a href="{% url 'signout' %}" class="w3-padding-large w3-hover-red w3-hide-small w3-right">LOGOUT</a>
           {%else%}
-          <a href="{% url 'signin' %}">로그인</a> <br>
-          <a href="{% url 'signup' %}">회원가입</a>
+          <a href="{% url 'signin' %}" class="w3-padding-large w3-hover-green">LOGIN</a>
+          <a href="{% url 'signup' %}" class="w3-padding-large w3-hover-orange">REGISTER</a>
           {% endif %}
-        </div>
       </div>
     </div>
   </nav>
+
+
   <!-- Page content -->
   <div class="w3-content" style="max-width:2000px;margin-top:46px">
 
