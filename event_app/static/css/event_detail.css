@@ -1,0 +1,10 @@
+textarea {
+    resize: none;
+    width: 100%;
+}
+
+.comment_field {
+    margin-bottom: 0;
+    border-color: #787878;
+    border-width: 0.1px;
+}
