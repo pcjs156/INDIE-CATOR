@@ -20,16 +20,35 @@
 </head>
 
 <body>
-    <a href="{% url 'new_artist' %}"><button>아티스트 등록</button></a>
-    {% for artist in artists %}
+    <a href="{% url 'new_artist' %}"><button>아티스트 등록</button></a><br>
+    <div>이하 이 달의 아티스트</div>
+    {% for artist in top_artists %}
+        <span id="{{artist.id}}">
         <img src="{{ artist.profile_image.url }}" style="width: 100px;">
         <div>아티스트 이름 : {{artist.name}}</div>
         <div>데뷔일 : {{artist.debut_date}}</div>
         <div>멤버 소개 : {{artist.member}}</div>
         <div>상세 설명 : {{artist.description}}</div>
-        <div>관심도 : {{artist.interest}}</div>
+        <div>관심도 : {{artist.interest}} | <a href="{% url 'interest_up' artist.id %}"><button>관심도 ++</button></a></div> 
         <div><a href="{% url 'artist_edit' artist.id%}"><button>아티스트 정보 수정</button></a></div>
         <div><a href="{% url 'artist_delete' artist.id%}"><button>아티스트 삭제</button></a></div>
+        </span>
+        <br>
+    {% endfor %}
+    
+    <br><br>
+    <div>이하 이 달의 아티스트를 제외한 아티스트</div>
+    {% for artist in rest_artists %}
+        <span id="{{artist.id}}">
+        <img src="{{ artist.profile_image.url }}" style="width: 100px;">
+        <div>아티스트 이름 : {{artist.name}}</div>
+        <div>데뷔일 : {{artist.debut_date}}</div>
+        <div>멤버 소개 : {{artist.member}}</div>
+        <div>상세 설명 : {{artist.description}}</div>
+        <div>관심도 : {{artist.interest}} | <a href="{% url 'interest_up' artist.id %}"><button>관심도 ++</button></a></div> 
+        <div><a href="{% url 'artist_edit' artist.id%}"><button>아티스트 정보 수정</button></a></div>
+        <div><a href="{% url 'artist_delete' artist.id%}"><button>아티스트 삭제</button></a></div>
+        </span>
         <br>
     {% endfor %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
