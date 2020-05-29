@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/event_detail.css' %}">
 
 <style>
     body {
@@ -34,10 +35,10 @@
             <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right"
                 href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i
                     class="fa fa-bars"></i></a>
-            <a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
-            <a href="#band" class="w3-bar-item w3-button w3-padding-large w3-hide-small">ARTIST</a>
-            <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small">EVENT</a>
-        </div>
+                    <a href="{% url 'main_home' %}" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+                    <a href="{% url 'artist_main' %}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">ARTIST</a>
+                    <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small">EVENT</a>
+              </div>
     </div>
 
     <!-- Page content -->
@@ -50,73 +51,91 @@
                 <h2 class="w3-wide w3-center">EVENT DETAIL</h2>
                 <p class="w3-opacity w3-center"><i>Remember to book your artists!</i></p><br>
 
-        <!-- event detail -->
+                <!-- event detail -->
 
-              <img src="{{event.poster.url}}" alt="AOR CRAZYSUNDAY" style="width:100%" class="w3-hover-opacity">
-              <div class="w3-container w3-white">
-                <p><b><div>행사 이름 : {{event.name}}</div></b></p>
-                <p><b><div>장소 : {{event.location}}</div></b></p>
-                <p class="w3-opacity"><div><b>시작일시 : </b>{{event.start_date}}</div></p>
-                <p class="w3-opacity"><div><b>종료일시 : </b>{{event.end_date}}</div></p>
-                <p><div><b>상세내용 : </b>{{event.description}}</div></p>
-                <!-- 이하 아티스트 목록 -->
+                <img src="{{event.poster.url}}" alt="AOR CRAZYSUNDAY" style="width:100%" class="w3-hover-opacity">
+                <div class="w3-container w3-white">
+                    <p><b>
+                            <div>행사 이름 : {{event.name}}</div>
+                        </b></p>
+                    <p><b>
+                            <div>장소 : {{event.location}}</div>
+                        </b></p>
+                    <p class="w3-opacity">
+                        <div><b>시작일시 : </b>{{event.start_date}}</div>
+                    </p>
+                    <p class="w3-opacity">
+                        <div><b>종료일시 : </b>{{event.end_date}}</div>
+                    </p>
+                    <p>
+                        <div><b>상세내용 : </b>{{event.description}}</div>
+                    </p>
+                    <!-- 이하 아티스트 목록 -->
                     {% for artist in event.artist_list %}
                     <div><b>출연 아티스트 : </b>{{artist.name}}</div>
                     {% endfor %}
                     <br>
-                <button class="w3-block w3-black w3-padding-16 w3-section w3-right" onclick="document.getElementById('ticketModal').style.display='block'">write comment</button>
-              </div>
+                    <button class="w3-block w3-black w3-padding-16 w3-section w3-right"
+                        onclick="document.getElementById('ticketModal').style.display='block'">write comment</button>
+                </div>
             </div>
 
-            
 
-       <!-- 이하 댓글 목록 -->
-       <br><br><h2 class="w3-wide w3-center">COMMENTS </h2><br>
-        {% for comment in comments %}
-        <div class="w3-container w3-white w3-content w3-padding-64" style="max-width:770px">
-        <article>
-            <h5 class="w3-wide w3-center"><div><i class="fa fa-user"></i> {{comment.author}}</div></h5>
-            <h6 class="w3-opacity w3-center"><i><div>{{comment.commented_date}}</div></i></h6><br>
-            <h8 class="w3-wide w3-center"><div>{{comment.body}}</div></h8>
+
+            <!-- 이하 댓글 목록 -->
             <br><br>
-            <hr>
-            {% endfor %}
-            </article>
-        </div>
+            <h2 class="w3-wide w3-center">COMMENTS </h2><br>
+            {% for comment in comments %}
+            <div class="w3-container w3-white w3-content w3-padding-64" style="max-width:770px">
+                <article>
+                    <h5 class="w3-wide w3-center">
+                        <div><i class="fa fa-user"></i> {{comment.author}}</div>
+                    </h5>
+                    <h6 class="w3-opacity w3-center"><i>
+                            <div>{{comment.commented_date}}</div>
+                        </i></h6><br>
+                    <h8 class="w3-wide w3-center">
+                        <div>{{comment.body}}</div>
+                    </h8>
+                    <br><br>
+                    <hr>
+                    {% endfor %}
+                </article>
+            </div>
 
 </body>
 
 </html>
 
-  <!-- Comment Modal -- 댓글 작성 modal -->
-  
-  <div id="ticketModal" class="w3-modal">
+<!-- Comment Modal -- 댓글 작성 modal -->
+
+<div id="ticketModal" class="w3-modal">
     <div class="w3-modal-content w3-animate-top w3-card-4">
-      <header class="w3-container w3-white w3-center w3-padding-32"> 
-        <span onclick="document.getElementById('ticketModal').style.display='none'"
-            class="w3-button w3-black w3-xlarge w3-display-topright">×</span>
+        <header class="w3-container w3-white w3-center w3-padding-32">
+            <span onclick="document.getElementById('ticketModal').style.display='none'"
+                class="w3-button w3-black w3-xlarge w3-display-topright">×</span>
             <h2 class="w3-wide"></i>Comment</h2>
-             </header>
-             <div class="w3-container">
+        </header>
+        <div class="w3-container">
 
-        <form action="{% url 'new_comment' event.id %}" method="POST" enctype="multipart/form-data">
-            {% csrf_token %} 
-
-             <p><label class="w3-text-black"><i class="fa fa-user"> </i> your name</label></p>
-             <input class="w3-text-black" type=" {{form.author}} "><br><br><br><br>
-                <p><label class="w3-text-black "><i class="fa fa-pencil"></i> your thoughts on this event</label></p>
-                 <input class="w3-text-black w3-input w3-border" {{form.body}} ><br>
-             <button class="w3-button w3-block w3-black w3-padding-16 w3-section w3-right" type="submit">작성하기 <i class="fa fa-check"></i></button>
-             <br>   <br><br>     
-        </form>
-        <br><br> 
+            <form action="{% url 'new_comment' event.id %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <p class="comment_field"><label class="w3-text-black"><i class="fa fa-user"> </i> your name</label></p>
+                <input type="text" name="author" value="{{user.username}}">
+                <br><br>
+                <p class="comment_field"><label class="w3-text-black "><i class="fa fa-pencil"></i> your thoughts on this event</label></p>
+                <textarea name="body"></textarea>
+                <button class="w3-button w3-block w3-black w3-padding-16 w3-section w3-right" type="submit">작성하기 <i
+                        class="fa fa-check"></i></button>
+                <br> <br><br>
+            </form>
+            <br><br>
+        </div>
     </div>
-  </div>
 
 
-  <!-- 이건 있어야 되나 없어도 되나 모르겠음 -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-      crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <!-- 이건 있어야 되나 없어도 되나 모르겠음 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
