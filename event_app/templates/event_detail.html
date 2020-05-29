@@ -91,6 +91,24 @@
                     {% for artist in event.artist_list %}
                     <div>{{artist.name}}</div>
                     {% endfor %}
+
+                    <!-- 이하 댓글 작성 -->
+                    <form action="{% url 'new_comment' event.id %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        작성자 : {{form.author}} <br>
+                        {{form.body}}
+                        <button type="submit">작성</button>
+                    </form>
+
+                    <hr>
+
+                    <!-- 이하 댓글 목록 -->
+                    {% for comment in comments %}
+                    <div>작성자 : {{comment.author}}</div> 
+                    <div>작성일 : {{comment.commented_date}}</div>
+                    <div>{{comment.body}}</div>
+                    <br><br>
+                    {% endfor %}
                 </article>
 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
