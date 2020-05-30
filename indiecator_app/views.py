@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.db.models import Max
+from django.contrib.auth.decorators import login_required
 
 from .models import Artist
 from .form import ArtistForm
@@ -18,6 +19,7 @@ def artist_main(request):
 
     return render(request, 'artist_main.html', {'top_artists':top_artists, 'rest_artists':rest_artists})
 
+@login_required
 # 아티스트 추가 페이지 : /artist/new
 def new_artist(request):
     if request.method == 'POST':
@@ -31,6 +33,7 @@ def new_artist(request):
         form = ArtistForm()
         return render(request, 'new_artist.html', {'form':form})
 
+@login_required
 # 아티스트 수정 페이지 : /artist/edit/(artist_id)
 def artist_edit(request, artist_id):
     artist = get_object_or_404(Artist, pk=artist_id)
@@ -45,7 +48,7 @@ def artist_edit(request, artist_id):
         form = ArtistForm()
         return render(request, 'artist_edit.html', {'artist':artist, 'form':form})
 
-
+@login_required
 # CRUD - Update
 def artist_update(request, artist_id):
     modified_artist = get_object_or_404(Artist, pk=artist_id)
@@ -61,12 +64,14 @@ def artist_update(request, artist_id):
     return redirect('/artist/')
 
 
+@login_required
 # CRUD - Delete
 def artist_delete(request, artist_id):
     target_artist = get_object_or_404(Artist, pk=artist_id)
     target_artist.delete()
     return redirect('artist_main')
 
+@login_required
 def interest_up(request, artist_id):
     target_artist = get_object_or_404(Artist, pk=artist_id)
     print(target_artist.interest)
