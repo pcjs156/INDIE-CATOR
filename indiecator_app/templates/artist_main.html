@@ -43,8 +43,8 @@
 
     <!-- Artist of the month -->
     <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
-        <h2 class="w3-wide">ARTIST OF THE MONTH</h2>
-        <p class="w3-opacity"><i>check out the artist of the month</i></p><br>
+        <h2 class="w3-wide">ARTIST OF THE MONTH</h2><br>
+        <p class="w3-opacity"><i>이달의 아티스트는 매달 가장 관심도가 높은 아티스트로 지정됩니다 !</i></p><br>
     {% for artist in top_artists %}
         <span id="{{artist.id}}"> </span>
         <img src="{{ artist.profile_image.url }}" style="width: 770px;">
