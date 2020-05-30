@@ -55,7 +55,7 @@
         <div><b>DEBUT  <br><br></b>{{artist.debut_date}}</div><hr>
         <div><b>MEMBERS  <br><br></b>{{artist.member}}</div><hr>
         <div><b>DESCRIPTION <br><br></b>{{artist.description}}</div><hr>
-        <div><b>INTEREST LEVEL</b> ㅣ {{artist.interest}}  <a href="{% url 'interest_up' artist.id %}">
+        <div><b>INTEREST LEVEL</b> ㅣ <a href="{% url 'interest_up' artist.id %}"> {{artist.interest}} </a>
         <button class="w3-block w3-black w3-padding-16 w3-section w3-right">+ interest level</button></div>       
     </div>
     <br><br><br>
