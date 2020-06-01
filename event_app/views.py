@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, resolve_url
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 
@@ -13,6 +13,9 @@ def main(request):
 def home(request):
     events = Event.objects.all()
     return render(request, 'home.html', {'events':events})
+
+def event_list(request):
+    return redirect('/event')
 
 # 공연 세부 정보 : /event_det   ail/(event_id)
 def event_detail(request, event_id):
