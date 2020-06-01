@@ -5,7 +5,11 @@ from django.contrib.auth.decorators import login_required
 from .models import Event, Comment
 from .form import CommentForm
 
-# 메인 페이지 : /
+# 사이트 전체 메인페이지
+def main(request):
+    return render(request, 'main.html')
+
+# 이벤트 메인페이지 : /
 def home(request):
     events = Event.objects.all()
     return render(request, 'home.html', {'events':events})

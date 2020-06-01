@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+</head>
+
+{% block head_default %}
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="{% static 'css/main.css' %}"> -->
+<link rel="stylesheet" href="{% static 'css/common.css' %}">
+{% endblock %}
+
+{% block content %}
+<article>
+    <header class="v-header container">
+        <div class="fullscreen-video-wrap">
+            <video src="{% static 'Band_1.mp4'%}" autoplay="true" loop="true"></video>
+        </div>
+
+        <div style="text-align: center;">
+        <div class="header-content"><h1>Welcome to indie-cator!</h1>
+        <p>If you're wandering to explore music, artists, concert<br>
+        If you are looking for some excitement in your life,<br>
+        we are here for you.  </p>
+        </div>
+        <a href="{% url 'event_home' %}">
+            <button class="w3-button w3-black w3-padding-16 w3-section w3-center">Show More</button>
+        </a>
+        </div>  
+    </header>
+</article>
+{% endblock %}
