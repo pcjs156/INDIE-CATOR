@@ -2,6 +2,7 @@
 }
 
 .v-header{
+    width:100vh;
     height:100vh;
     display:flex;
     align-items: center;
@@ -9,7 +10,7 @@
 }
 
 .container{
-    max-width: 960px;
+    max-width: 1080px;
     padding-left: 1rem;
     padding-right: 1rem;
     margin:auto;
@@ -28,6 +29,8 @@
 .fullscreen-video-wrap video{
     min-width: 100%;
     min-height: 100%;
+
+
 }
 
 .header-overlay{
