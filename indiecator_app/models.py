@@ -15,3 +15,6 @@ class Artist(models.Model):
 
     def get_name(self):
         return str(self.name)
+    
+    def get_formatted_date(self):
+        return self.debut_date.strftime("%Y-%m-%d")
