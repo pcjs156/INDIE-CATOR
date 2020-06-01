@@ -37,31 +37,36 @@ def new_artist(request):
 # 아티스트 수정 페이지 : /artist/edit/(artist_id)
 def artist_edit(request, artist_id):
     artist = get_object_or_404(Artist, pk=artist_id)
+
     if request.method == 'POST':
-        form = ArtistForm(request.POST, request.FILES)
+        form = ArtistForm(request.POST, request.FILES, instance=artist)
         if form.is_valid():
-            content = form.save(commit=False)
-            content.save()
-            return redirect('/artist/')
+            artist.name = form.cleaned_data['name']
+            artist.debut_date = form.cleaned_data['debut_date']
+            artist.member = form.cleaned_data['member']
+            artist.description = form.cleaned_data['description']
+            artist.profile_image = form.cleaned_data['profile_image']
+            artist.save()
+            return redirect('/artist/' + '#' + str(artist_id))
 
     else :
         form = ArtistForm()
         return render(request, 'artist_edit.html', {'artist':artist, 'form':form})
 
-@login_required
-# CRUD - Update
-def artist_update(request, artist_id):
-    modified_artist = get_object_or_404(Artist, pk=artist_id)
-    modified_artist.name = request.POST['name']
-    modified_artist.debut_date = request.POST['debut_date']
-    modified_artist.member = request.POST['member']
-    modified_artist.description = request.POST['description']
-    # modified_artist.profile_image = request.POST['profile_image']
-    modified_artist.profile_image = request.POST.get('profile_image', False)
+# @login_required
+# # CRUD - Update
+# def artist_update(request, artist_id):
+#     modified_artist = get_object_or_404(Artist, pk=artist_id)
+#     modified_artist.name = request.POST['name']
+#     modified_artist.debut_date = request.POST['debut_date']
+#     modified_artist.member = request.POST['member']
+#     modified_artist.description = request.POST['description']
+#     # modified_artist.profile_image = request.POST['profile_image']
+#     modified_artist.profile_image = request.POST.get('profile_image', False)
 
-    modified_artist.save() 
+#     modified_artist.save() 
     
-    return redirect('/artist/')
+#     return redirect('/artist/')
 
 
 @login_required
