@@ -9,26 +9,28 @@
 {% endblock %}
 {% block content %}
 <article>
-    <form action="{% url 'artist_edit' artist.id %}" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div>
-            제목 : <input type="text" name="name" value="{{artist.name}}">
-        </div>
-        <div>
-            데뷔일 : <input type="text" name="debut_date" value="{{artist.debut_date}}">
-        </div>
-        <div>
-            멤버 소개 : <br>
-            <textarea name="member" cols="30" rows="10">{{artist.member}}</textarea>
-        </div>
-        <div>
-            상세 설명 : <br>
-            <textarea name="description" cols="30" rows="10">{{artist.description}}</textarea>
-        </div>
+    <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+        <form action="{% url 'artist_edit' artist.id %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+                제목 : <input type="text" name="name" value="{{artist.name}}">
+            </div>
+            <div>
+                데뷔일 : <input type="text" name="debut_date" value="{{artist.debut_date}}">
+            </div>
+            <div>
+                멤버 소개 : <br>
+                <textarea name="member" cols="30" rows="10">{{artist.member}}</textarea>
+            </div>
+            <div>
+                상세 설명 : <br>
+                <textarea name="description" cols="30" rows="10">{{artist.description}}</textarea>
+            </div>
 
-        <input type="file" name="profile_image">
+            <input type="file" name="profile_image">
 
-        <button type="submit">수정 완료</button>
-    </form>
+            <button type="submit">수정 완료</button>
+        </form>
+    </div>
 </article>
 {% endblock %}

@@ -58,7 +58,7 @@ def artist_edit(request, artist_id):
 # def artist_update(request, artist_id):
 #     modified_artist = get_object_or_404(Artist, pk=artist_id)
 #     modified_artist.name = request.POST['name']
-#     modified_artist.debut_date = request.POST['debut_date']
+#     modified_artist.debut_date = request.POST['debut_date']@@@
 #     modified_artist.member = request.POST['member']
 #     modified_artist.description = request.POST['description']
 #     # modified_artist.profile_image = request.POST['profile_image']
