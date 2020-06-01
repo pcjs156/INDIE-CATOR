@@ -2,23 +2,28 @@
 {% load static %}
 
 {% block head_default %}
-<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/signin.css' %}">
 <title>로그인 페이지</title>
 {% endblock %}
 
 {% block content%}
 <article>
-    <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
-        {% if error %}
-        <p style="color:red">{{ error }}</p>
-        {% endif %}
-
-        <form action="" method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Login">
-        </form>
-        <a href="{% url 'signup' %}">회원가입</a>
+    <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px;" id="main_frame">
+        <div class="w3-black">
+            <div class="w3-container w3-content w3-padding-64" style="max-width:800px; background-color: darkslategrey  ;">
+                <h2 class="w3-wide w3-center">Sign In</h2>
+                <p class="w3-opacity w3-center"><i>너는 누구냐?!</i></p>
+                {% if error %}
+                <p style="color:red">Check your ID and PW</p>
+                {% endif %}
+                <form action="" method="POST">
+                    {% csrf_token %}
+                        <span class="login_form">{{ form.username }}</span>
+                        <span class="login_form">{{ form.password }}</span>
+                    <input type="submit" value="Login">
+                </form>
+            </div>
+        </div>
     </div>
 </article>
 {% endblock %}

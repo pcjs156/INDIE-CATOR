@@ -3,6 +3,7 @@
 
 {% block head_default %}
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/artist_main.css' %}">
 <title>INDIE_CATOR</title>
 {% endblock %}
 
@@ -43,7 +44,7 @@
                     아티스트 등록
                 </button>
             </a>
-
+            
             <br><br><br>
             {% for artist in rest_artists %}
             <span id="{{artist.id}}">
