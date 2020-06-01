@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block head_default %}
-<title>register</title>
+<title>register here</title>
 {% endblock %}
 
 {% block content %}
@@ -15,16 +15,33 @@
 </head>
 
 <article>
-    <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
-        {% if error %}
-        <h3 style="color:red">{{ error }}</h3>
-        {% endif %}
+    <body>
+        <div class="w3-container w3-content w3-center w3-padding-64">
+            {% if error %}
+                <p style="color:red">{{ error }}</p>
+            {% endif %}
 
-        <form action="" method="POST">
+            <h2 class="w3-wide w3-center"style="color:#fff">PLEASE JOIN US !</h2><br>
+            <p class="w3-opacity w3-center"style="color:#f1f1f1"><i>register here to be a member ! <br> if you're already a member, go to login</i></p><br>
+
+            <form action="" method="POST">
             {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Sign Up">
-        </form>
-    </div>
+            <i class="fa fa-user" style="color:white"> </i>
+            <text style="color:white">put username</text> <br><br>{{form.username}}
+            <br><br><br>
+            <i class="fa fa-lock" style="color:white"> </i>
+            <text style="color:white">put password</text> <br><br>{{form.password}}
+            <br><br><br>
+            <i class="fa fa-lock" style="color:white"> </i>
+            <text style="color:white">confirm password</text> <br><br>{{ form.password_check }}
+            <br><br><br>
+            <i class="fa fa-envelope" style="color:white"> </i>
+            <text style="color:white">e-mail </text>  <br><br>{{ form.email }}
+            <br><br><br>
+            <p class="w3-opacity w3-center"style="color:#f1f1f1"><i>-------thank you for joining us !------- </i></p>
+            <button class="w3-button w3-white  w3-section w3-center" type="submit" value="Sign Up">now a memeber</button>
+             </form>
+        </div>
+    </body>
 </article>
 {% endblock %}

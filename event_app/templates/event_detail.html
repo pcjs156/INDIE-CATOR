@@ -84,8 +84,8 @@
 
                         <form action="{% url 'new_comment' event.id %}" method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
-                            <p class="comment_field"><label class="w3-text-black"><i class="fa fa-user"> </i> your
-                                    name</label></p>
+                            <p class="comment_field"><label class="w3-text-black"><i class="fa fa-user"> </i>
+                                    username</label></p>
                             <input type="text" name="author" value="{{user.username}}">
                             <br><br>
                             <p class="comment_field"><label class="w3-text-black "><i class="fa fa-pencil"></i> your

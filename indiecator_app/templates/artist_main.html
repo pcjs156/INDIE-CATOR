@@ -3,6 +3,7 @@
 
 {% block head_default %}
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/artist_main.css' %}">
 <title>INDIE_CATOR</title>
 {% endblock %}
 
@@ -12,7 +13,7 @@
     <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
         <h2 class="w3-wide">ARTIST OF THE MONTH</h2>
         <p class="w3-opacity"><i>check out the artist of the month</i></p><br>
-        {% for artist in top_artists %}
+    {% for artist in top_artists %}
         <span id="{{artist.id}}"> </span>
         <img src="{{ artist.profile_image.url }}" style="width: 770px;">
         <br><br>
@@ -33,34 +34,41 @@
     <br><br><br>
     {% endfor %}
 
-    <!-- 아티스트 추가하는곳 -->
+    <!-- 아티스트 더보기 -->
     <div class="w3-black">
         <div class="w3-black w3-container w3-content w3-padding-64" style="max-width:800px">
             <h2 class="w3-wide w3-center">DISCOVER NEW ARTIST</h2>
             <p class="w3-opacity w3-center"><i>add your favorite artist and rate !</i></p><br>
+
+            
+            <br><br><br>
+        {% for artist in rest_artists %}
+            <span id="{{artist.id}}">
+                <img src="{{ artist.profile_image.url }}" style="width: 300px;"><br><br>
+                <div><b>ARTIST_ </b> {{artist.name}}</div><br>
+                <div><b>DEBUT_ </b> {{artist.debut_date}}</div><br>
+                <div><b>MEMBERS_ </b> {{artist.member}}</div><br>
+                <div><b>ABOUT_ </b> {{artist.description}}</div><br>
+                <div><b>INTEREST LEVEL ㅣ</b> {{artist.interest}} <br></div>
+                <div>
+                    <a href="{% url 'interest_up' artist.id %}">
+                    <button class="w3-button w3-white  w3-section w3-center">관심도 ++</button></a>            
+                    <a href="{% url 'artist_edit' artist.id%}"><button class="w3-button w3-white  w3-section w3-center">아티스트 정보 수정</button></a>
+                    <a href="{% url 'artist_delete' artist.id%}"><button class="w3-button w3-white  w3-section w3-center">아티스트 삭제</button></a>
+                </div>
+            </span>
+            <br><hr>
+
+        {% endfor %}
+        
+ <!-- 아티스트 추가하기 -->
             <a href="{% url 'new_artist' %}">
                 <button class="w3-block w3-white w3-padding-16 w3-section w3-right">
-                    아티스트 등록
+                    click here to add new artist !
                 </button>
             </a>
-
-            <br><br><br>
-            {% for artist in rest_artists %}
-            <span id="{{artist.id}}">
-                <img src="{{ artist.profile_image.url }}" style="width: 100px;">
-                <div>아티스트 이름 : {{artist.name}}</div>
-                <div>데뷔일 : {{artist.debut_date}}</div>
-                <div>멤버 소개 : {{artist.member}}</div>
-                <div>상세 설명 : {{artist.description}}</div>
-                <div>관심도 : {{artist.interest}} | <a href="{% url 'interest_up' artist.id %}"><button>관심도 ++</button></a>
-                </div>
-                <div><a href="{% url 'artist_edit' artist.id%}"><button>아티스트 정보 수정</button></a></div>
-                <div><a href="{% url 'artist_delete' artist.id%}"><button>아티스트 삭제</button></a></div>
-            </span>
-            <br>
-            {% endfor %}
         </div>
     </div>
-
 </article>
+   
 {% endblock %}

@@ -1,0 +1,21 @@
+body {
+    background-color: black;
+}
+
+.login_form {
+    color: black;
+}
+
+.login_div {
+    display: grid;
+    grid-template-columns: 3rem 15rem;
+    grid-template-rows: 2rem 2rem;
+}
+
+#main_frame {
+    margin-top: 13%;
+}
+
+p { 
+    color: #000000; 
+   } 

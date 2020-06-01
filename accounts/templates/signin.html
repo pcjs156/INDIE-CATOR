@@ -2,17 +2,11 @@
 {% load static %}
 
 {% block head_default %}
+<link rel="stylesheet" href="{% static 'css/signin.css' %}">
 <title>login first !</title>
 {% endblock %}
 
 {% block content%}
-<head>
-<style>
-body {
-    background-color: #000000
-}
-</style>
-</head>
 
 <article>
     <body>
@@ -25,17 +19,22 @@ body {
               {% endif %}
 
               <h2 class="w3-wide w3-center">LOGIN FIRST ! </h2><br>
-              <p class="w3-opacity w3-center"><i>please login first to comment ! <br> if you're not a member yet, go to register</i></p><br>
+              <p class="w3-opacity w3-center" style="color:#f1f1f1">
+                  <i>please login first to comment ! <br> 
+                    if you're not a member yet, go to register</i>
+              </p><br>
               
-              <form action="" method="POST" class="w3-wide w3-center" >
+              <form action="" method="POST" class="w3-center" >
              {% csrf_token %}
-             username <br>{{form.username}}<br><br><br>
-             password  <br>{{form.password}}
+             <i class="fa fa-user"> </i>
+             username <br><br><p style="color:black">{{form.username}}</p><br><br><br>
+             <i class="fa fa-lock"> </i>
+             password  <br><br><p style="color:black">{{form.password}}</p>
              <br><br><br>
              you can now 
-             <button class="w3-button w3-white  w3-section w3-center" type="submit" value="Login">login</button>
+             <button class="w3-button w3-white  w3-section w3-center" type="submit" value="Login">login </button>
             
-             not a member?
+                  not a member?
              <a href="{% url 'signup' %}"> <button class="w3-button w3-white w3-section w3-center">register</button></a>
             </form>
             </div>
