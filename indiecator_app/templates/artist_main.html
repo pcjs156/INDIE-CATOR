@@ -39,10 +39,8 @@
             <h2 class="w3-wide w3-center">DISCOVER NEW ARTIST</h2>
             <p class="w3-opacity w3-center"><i>add your favorite artist and rate !</i></p><br>
 
-
-            <br><br><br>
             {% for artist in rest_artists %}
-            <span id="{{artist.id}}">
+            <div id="{{artist.id}}" style="text-align: center;">
                 <img src="{{ artist.profile_image.url }}" style="width: 300px;"><br><br>
                 <div><b>ARTIST_ </b> {{artist.name}}</div><br>
                 <div><b>DEBUT_ </b> {{artist.debut_date}}</div><br>
@@ -53,24 +51,25 @@
                 <div>
 
                     <a href="{% url 'artist_edit' artist.id%}"><button
-                            class="w3-button w3-white  w3-section w3-center">아티스트 정보 수정</button></a>
+                            class="w3-button w3-white  w3-section w3-center artist_btn">EDIT</button></a>
                     <a href="{% url 'artist_delete_confirm' artist.id%}"><button
-                            class="w3-button w3-white  w3-section w3-center">아티스트 삭제</button></a>
+                            class="w3-button w3-white  w3-section w3-center artist_btn">REMOVE</button></a>
                 </div>
-            </span>
-            <br>
-            <hr>
+                </span>
 
-            {% endfor %}
+                <br>
+                <hr>
 
-            <!-- 아티스트 추가하기 -->
-            <a href="{% url 'new_artist' %}">
-                <button class="w3-block w3-white w3-padding-16 w3-section w3-right">
-                    click here to add new artist !
-                </button>
-            </a>
+                {% endfor %}
+
+                <!-- 아티스트 추가하기 -->
+                <a href="{% url 'new_artist' %}">
+                    <button class="w3-block w3-white w3-padding-16 w3-section w3-right">
+                        click here to add new artist !
+                    </button>
+                </a>
+            </div>
         </div>
-    </div>
 </article>
 
 {% endblock %}

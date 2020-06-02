@@ -1,23 +1,29 @@
 .delete-link {
-    background-color: red;
-    color: white;
-    border: 1px solid white;
-    cursor: pointer;
-    padding: 3px;
-  }
+  background-color: red;
+  color: white;
+  border: 1px solid white;
+  cursor: pointer;
+  padding: 3px;
+}
 
-  #result {
-    margin: 20px;
-    padding: 10px;
-    border: 1px solid orange;
-  }
+#result {
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid orange;
+}
 
-  .interest_up_top:hover {
-    text-decoration: none;
-    color: red;
-  }
+.interest_up_top:hover {
+  text-decoration: none;
+  color: red;
+}
 
-  .interest_up:hover {
-    text-decoration: none;
-    color: red;
-  }
+.interest_up:hover {
+  text-decoration: none;
+  color: red;
+}
+
+.artist_btn {
+  width: 6rem;
+  padding: 0.1rem;
+  color: red;
+}
