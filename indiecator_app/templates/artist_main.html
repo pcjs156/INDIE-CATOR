@@ -13,7 +13,7 @@
     <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
         <h2 class="w3-wide">ARTIST OF THE MONTH</h2>
         <p class="w3-opacity"><i>check out the artist of the month</i></p><br>
-    {% for artist in top_artists %}
+        {% for artist in top_artists %}
         <span id="{{artist.id}}"> </span>
         <img src="{{ artist.profile_image.url }}" style="width: 770px;">
         <br><br>
@@ -40,9 +40,9 @@
             <h2 class="w3-wide w3-center">DISCOVER NEW ARTIST</h2>
             <p class="w3-opacity w3-center"><i>add your favorite artist and rate !</i></p><br>
 
-            
+
             <br><br><br>
-        {% for artist in rest_artists %}
+            {% for artist in rest_artists %}
             <span id="{{artist.id}}">
                 <img src="{{ artist.profile_image.url }}" style="width: 300px;"><br><br>
                 <div><b>ARTIST_ </b> {{artist.name}}</div><br>
@@ -52,16 +52,20 @@
                 <div><b>INTEREST LEVEL ㅣ</b> {{artist.interest}} <br></div>
                 <div>
                     <a href="{% url 'interest_up' artist.id %}">
-                    <button class="w3-button w3-white  w3-section w3-center">관심도 ++</button></a>            
-                    <a href="{% url 'artist_edit' artist.id%}"><button class="w3-button w3-white  w3-section w3-center">아티스트 정보 수정</button></a>
-                    <a href="{% url 'artist_delete' artist.id%}"><button class="w3-button w3-white  w3-section w3-center">아티스트 삭제</button></a>
+                        <button class="w3-button w3-white  w3-section w3-center">관심도 ++</button></a>
+                    <a href="{% url 'artist_edit' artist.id%}"><button
+                            class="w3-button w3-white  w3-section w3-center">아티스트 정보 수정</button></a>
+                    <a href="{% url 'artist_delete' artist.id%}"
+                        onclick="return confirm('Are you sure you want to delete this item?');"><button
+                            class="w3-button w3-white  w3-section w3-center">아티스트 삭제</button></a>
                 </div>
             </span>
-            <br><hr>
+            <br>
+            <hr>
 
-        {% endfor %}
-        
- <!-- 아티스트 추가하기 -->
+            {% endfor %}
+
+            <!-- 아티스트 추가하기 -->
             <a href="{% url 'new_artist' %}">
                 <button class="w3-block w3-white w3-padding-16 w3-section w3-right">
                     click here to add new artist !
@@ -70,5 +74,8 @@
         </div>
     </div>
 </article>
-   
+
+<script>
+
+</script>
 {% endblock %}
