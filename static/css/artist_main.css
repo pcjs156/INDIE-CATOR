@@ -5,8 +5,13 @@
     cursor: pointer;
     padding: 3px;
   }
+
   #result {
     margin: 20px;
     padding: 10px;
     border: 1px solid orange;
+  }
+
+  #interest_up:hover {
+    color: red;
   }

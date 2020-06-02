@@ -26,10 +26,9 @@
         <hr>
         <div><b>DESCRIPTION <br><br></b>{{artist.description}}</div>
         <hr>
-        <div><b>INTEREST LEVEL</b> ㅣ {{artist.interest}}
-            <a href="{% url 'interest_up' artist.id %}"><button
-                    class="w3-block w3-black w3-padding-16 w3-section w3-right">+ interest level</button></a>
-        </div>
+        <div><b>INTEREST LEVEL</b> ㅣ {{artist.interest}} <a href="{% url 'interest_up' artist.id %}"
+                class="interest_up_top">❤</a><br></div>
+    </div>
     </div>
     <br><br><br>
     {% endfor %}
@@ -49,10 +48,10 @@
                 <div><b>DEBUT_ </b> {{artist.debut_date}}</div><br>
                 <div><b>MEMBERS_ </b> {{artist.member}}</div><br>
                 <div><b>ABOUT_ </b> {{artist.description}}</div><br>
-                <div><b>INTEREST LEVEL ㅣ</b> {{artist.interest}} <br></div>
+                <div><b>INTEREST LEVEL ㅣ</b> {{artist.interest}} <a href="{% url 'interest_up' artist.id %}"
+                        class="interest_up">❤</a><br></div>
                 <div>
-                    <a href="{% url 'interest_up' artist.id %}">
-                        <button class="w3-button w3-white  w3-section w3-center">관심도 ++</button></a>
+
                     <a href="{% url 'artist_edit' artist.id%}"><button
                             class="w3-button w3-white  w3-section w3-center">아티스트 정보 수정</button></a>
                     <a href="{% url 'artist_delete_confirm' artist.id%}"><button

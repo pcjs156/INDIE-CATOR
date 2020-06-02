@@ -5,8 +5,19 @@
     cursor: pointer;
     padding: 3px;
   }
+
   #result {
     margin: 20px;
     padding: 10px;
     border: 1px solid orange;
+  }
+
+  .interest_up_top:hover {
+    text-decoration: none;
+    color: red;
+  }
+
+  .interest_up:hover {
+    text-decoration: none;
+    color: red;
   }
