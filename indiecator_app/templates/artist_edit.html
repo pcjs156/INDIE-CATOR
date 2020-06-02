@@ -5,32 +5,53 @@
 <link rel="stylesheet" href="{% static 'css/common.css' %}">
 <link rel="stylesheet" href="{% static 'css/artist_edit.css' %}">
 
-<title>페이지 제목</title>
+<title>edit artist</title>
 {% endblock %}
+
 {% block content %}
+<head>
+    <style>
+    body{
+        background-color:black
+    }  
+    </style>
+</head>
+
 <article>
-    <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
         <form action="{% url 'artist_edit' artist.id %}" method="POST" enctype="multipart/form-data">
+                <!-- edit artist -->
+    <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+        <h2 class="w3-wide"style=color:#fff>EDIT ARTIST INFO</h2><hr><br>
+
+                 <!-- artist attributes -->
+
             {% csrf_token %}
             <div>
-                제목 : <input type="text" name="name" value="{{artist.name}}">
+                <p style=color:#fff><b>ARTIST</b></p><input type="text" name="name" value="{{artist.name}}">
+                <br><br><br>
             </div>
             <div>
-                데뷔일 : <input type="date" name="debut_date" value="{{artist.get_formatted_date}}">
+                <p style=color:#fff><b>DEBUT</b></p> <input type="date" name="debut_date" value="{{artist.get_formatted_date}}">
+                <br><br><br>
             </div>
             <div>
-                멤버 소개 : <br>
+                <p style=color:#fff><b>MEMBERS</b></p>
                 <textarea name="member" cols="30" rows="10">{{artist.member}}</textarea>
+                <br><br>
             </div>
             <div>
-                상세 설명 : <br>
+                <p style=color:#fff><b>DESCRIPTION</b></p>
                 <textarea name="description" cols="30" rows="10">{{artist.description}}</textarea>
+                <br><br><br>
             </div>
 
-            <input type="file" name="profile_image">
+            <!-- <button class="w3-button w3-white  w3-section w3-center">관심도 ++</button> -->
 
-            <button type="submit">수정 완료</button>
+            <input class="w3-button w3-white  w3-section w3-center" type="file" name="profile_image"></input>
+
+            <button class="w3-button w3-white  w3-section w3-center" type="submit">수정 완료</button>
         </form>
     </div>
 </article>
+</body>
 {% endblock %}

@@ -8,6 +8,7 @@
 {% endblock %}
 
 {% block content %}
+<html>
 <article>
     <div class="w3-content" style="max-width:2000px;margin-top:46px">
 
@@ -17,6 +18,7 @@
             <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
                 <h2 class="w3-wide w3-center">EVENT DETAIL</h2>
                 <p class="w3-opacity w3-center"><i>Remember to book your artists!</i></p><br>
+        
 
                 <!-- event detail -->
 
@@ -46,15 +48,15 @@
                         onclick="document.getElementById('ticketModal').style.display='block'">write comment</button>
                 </div>
             </div>
-
-
+        
+    </div>
 
             <!-- 이하 댓글 목록 -->
             <br><br>
             <h2 class="w3-wide w3-center">COMMENTS </h2><br>
             {% for comment in comments %}
             <div class="w3-container w3-white w3-content w3-padding-64" style="max-width:770px">
-                <article>
+                
                     <h5 class="w3-wide w3-center">
                         <div><i class="fa fa-user"></i> {{comment.author}}</div>
                     </h5>
@@ -65,10 +67,11 @@
                         <div>{{comment.body}}</div>
                     </h8>
                     <br><br>
-                    <hr>
-                    {% endfor %}
-                </article>
-            </div>
+                    <hr>     
+            </div>         
+        </div>
+            {% endfor %}
+
 
 
 
@@ -99,6 +102,7 @@
                         <br><br>
                     </div>
                 </div>
-
 </article>
+</html>
+
 {% endblock %}
