@@ -54,6 +54,12 @@ def artist_edit(request, artist_id):
         return render(request, 'artist_edit.html', {'artist':artist, 'form':form})
 
 @login_required
+# CRUD - Delete Confirm
+def artist_delete_confirm(request, artist_id):
+    artist = get_object_or_404(Artist, pk=artist_id)
+    return render(request, 'artist_delete_confirm.html', {'artist':artist})
+
+@login_required
 # CRUD - Delete
 def artist_delete(request, artist_id):
     target_artist = get_object_or_404(Artist, pk=artist_id)

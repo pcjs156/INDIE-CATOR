@@ -55,8 +55,7 @@
                         <button class="w3-button w3-white  w3-section w3-center">관심도 ++</button></a>
                     <a href="{% url 'artist_edit' artist.id%}"><button
                             class="w3-button w3-white  w3-section w3-center">아티스트 정보 수정</button></a>
-                    <a href="{% url 'artist_delete' artist.id%}"
-                        onclick="return confirm('Are you sure you want to delete this item?');"><button
+                    <a href="{% url 'artist_delete_confirm' artist.id%}"><button
                             class="w3-button w3-white  w3-section w3-center">아티스트 삭제</button></a>
                 </div>
             </span>
@@ -75,7 +74,4 @@
     </div>
 </article>
 
-<script>
-
-</script>
 {% endblock %}
