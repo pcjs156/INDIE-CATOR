@@ -30,7 +30,7 @@
                     <a href="{% url 'event_home' %}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">HOME</a>
                     <a href="{% url 'artist_main' %}"
                         class="w3-bar-item w3-button w3-padding-large w3-hide-small">ARTIST</a>
-                    <a href="{% url 'event_home' %}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">EVENT</a>
+                    <a href="#event_list" class="w3-bar-item w3-button w3-padding-large w3-hide-small">EVENT</a>
 
                     <type class="w3-padding-large w3-hide-small w3-right">
                         {% if user.is_authenticated %} WELCOME, {{user.username}}!</type>
