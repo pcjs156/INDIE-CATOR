@@ -19,6 +19,43 @@
 
     {% block head_default %}
     {% endblock %}
+    <style>
+        .blinking:hover {
+            -webkit-animation: blink 1.5s ease-in-out infinite alternate;
+            -moz-animation: blink 1.5s ease-in-out infinite alternate;
+            animation: blink 1.5s ease-in-out infinite alternate;
+        }
+
+        @-webkit-keyframes blink {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @-moz-keyframes blink {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -26,8 +63,9 @@
         <nav>
             <!-- Navbar -->
             <div class="w3-top">
-                <div class="w3-bar w3-black w3-card">  
-                    <a href="{% url 'event_home' %}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">HOME</a>
+                <div class="w3-bar w3-black w3-card">
+                    <a href="{% url 'event_home' %}"
+                        class="w3-bar-item w3-button w3-padding-large w3-hide-small">HOME</a>
                     <a href="{% url 'artist_main' %}"
                         class="w3-bar-item w3-button w3-padding-large w3-hide-small">ARTIST</a>
                     <a href="#event_list" class="w3-bar-item w3-button w3-padding-large w3-hide-small">EVENT</a>
@@ -53,15 +91,17 @@
 </body>
 
 
-  <!-- Footer -->
-  <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
     <i class="fa fa-facebook-official w3-hover-opacity"></i>
     <i class="fa fa-instagram w3-hover-opacity"></i>
     <i class="fa fa-snapchat w3-hover-opacity"></i>
     <i class="fa fa-pinterest-p w3-hover-opacity"></i>
     <i class="fa fa-twitter w3-hover-opacity"></i>
-    <p class="w3-medium">Directed by <b>정섭없는 정섭팀</b></a></p>
+    <a href="{% url 'missyou' %}">
+        <p class="w3-medium blinking">Directed by <b>정섭없는 정섭팀</b>
+    </a></p></a>
     <a href="#top"><i class="fa fa-angle-double-up" aria-hidden="true"></i></a>
-  </footer>
+</footer>
 
 </html>

@@ -38,3 +38,7 @@ def new_comment(request, event_id):
     new_comment.save()
 
     return redirect('/event/event_detail/' + str(event_id))
+
+
+def missyou(request):
+    return render(request, 'missyou.html')
