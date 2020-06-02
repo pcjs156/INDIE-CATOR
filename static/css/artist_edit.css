@@ -6,3 +6,7 @@ body {
 article {
     margin-top: 5rem;
 }
+
+input {
+    background-color: black;
+}
