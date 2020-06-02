@@ -50,6 +50,7 @@
     <article>
         <div class="w3-black" id="main_frame">
             <div class="w3-black w3-container w3-content w3-padding-64" id="form_container">
+                <img src="{% static 'img/NOCAT.jpg'%}" style="width:20%">
                 <form action="{% url 'artist_delete' artist.id %}" method="post">
                     {% csrf_token %}
                     <p>Are you sure you want to delete {{artist.name}}?</p>
