@@ -41,7 +41,8 @@
                     </p>
                     <!-- 이하 아티스트 목록 -->
                     {% for artist in event.artist_list %}
-                    <div><b>출연 아티스트 : </b>{{artist.name}}</div>
+                    <b>출연 아티스트 : </b>
+                    <div>{{artist.name}}</div>
                     {% endfor %}
                     <br>
                     <button class="w3-block w3-black w3-padding-16 w3-section w3-right"
